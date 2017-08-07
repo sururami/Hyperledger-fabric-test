@@ -122,16 +122,16 @@ func (s *SmartContract) initFidoLedger(APIstub shim.ChaincodeStubInterface) sc.R
 	 *	Car{Make: "Holden", Model: "Barina", Colour: "brown", Owner: "Shotaro"},
 	 */
 		
-		Fido{BcID: "aaa", AaguID: "aa", CredentialID: "credentialID1", RegResp: "a"},
-	 	Fido{BcID: "bbb", AaguID: "bb", CredentialID: "credentialID2", RegResp: "b"},
-	 	Fido{BcID: "ccc", AaguID: "cc", CredentialID: "credentialID3", RegResp: "c"},
-	 	Fido{BcID: "ddd", AaguID: "dd", CredentialID: "credentialID4", RegResp: "d"},
-	 	Fido{BcID: "eee", AaguID: "ee", CredentialID: "credentialID5", RegResp: "e"},
-	 	Fido{BcID: "fff", AaguID: "ff", CredentialID: "credentialID6", RegResp: "f"},
-	 	Fido{BcID: "ggg", AaguID: "gg", CredentialID: "credentialID7", RegResp: "g"},
-	 	Fido{BcID: "hhh", AaguID: "hh", CredentialID: "credentialID8", RegResp: "h"},
-	 	Fido{BcID: "iii", AaguID: "ii", CredentialID: "credentialID9", RegResp: "i"},
-	 	Fido{BcID: "jjj", AaguID: "jj", CredentialID: "credentialID10", RegResp: "j"},
+		Fido{BcID: "aaa", AaguID: "aa", CredentialID: "credID1", RegResp: "a"},
+	 	Fido{BcID: "bbb", AaguID: "bb", CredentialID: "credID2", RegResp: "b"},
+	 	Fido{BcID: "ccc", AaguID: "cc", CredentialID: "credID3", RegResp: "c"},
+	 	Fido{BcID: "ddd", AaguID: "dd", CredentialID: "credID4", RegResp: "d"},
+	 	Fido{BcID: "eee", AaguID: "ee", CredentialID: "credID5", RegResp: "e"},
+	 	Fido{BcID: "fff", AaguID: "ff", CredentialID: "credID6", RegResp: "f"},
+	 	Fido{BcID: "ggg", AaguID: "gg", CredentialID: "credID7", RegResp: "g"},
+	 	Fido{BcID: "hhh", AaguID: "hh", CredentialID: "credID8", RegResp: "h"},
+	 	Fido{BcID: "iii", AaguID: "ii", CredentialID: "credID9", RegResp: "i"},
+	 	Fido{BcID: "jjj", AaguID: "jj", CredentialID: "credID10", RegResp: "j"},
 	
 	/*
 	 *	Fido{BcID: "aaa", AaguID: "aa", CredentialID: "credentialID1", RegResp: "a", SignCounter: "1", RegistrationTime: "123", LastAuthenticationTime: "123"},
@@ -165,8 +165,9 @@ func (s *SmartContract) createFido(APIstub shim.ChaincodeStubInterface, args []s
 		return shim.Error("Incorrect number of arguments. Expecting 8")
 	}
 
-	// var fido = Fido{Make: args[1], Model: args[2], Colour: args[3], Owner: args[4]}
-	var fido = Fido{BcID: args[1], AaguID: args[2], CredentialID: args[3], RegResp: args[4], SignCounter: args[5], RegistrationTime: args[6], LastAuthenticationTime: args[7]}
+	// var car = Car{Make: args[1], Model: args[2], Colour: args[3], Owner: args[4]}
+	// var fido = Fido{BcID: args[1], AaguID: args[2], CredentialID: args[3], RegResp: args[4], SignCounter: args[5], RegistrationTime: args[6], LastAuthenticationTime: args[7]}
+	var fido = Fido{BcID: args[1], AaguID: args[2], CredentialID: args[3], RegResp: args[4]}
 
 	fidoAsBytes, _ := json.Marshal(fido)
 	APIstub.PutState(args[0], fidoAsBytes)
